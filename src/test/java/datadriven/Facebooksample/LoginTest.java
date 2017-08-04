@@ -8,15 +8,16 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
 import utility.Base;
+import utility.JUnitTestReport;
 
-public class LoginTest extends Base {
+public class LoginTest extends JUnitTestReport  {
 	static WebDriver driver;
 	LoginPage loginPage;
-	Base base = new Base();
+	static Base base = new Base();
 
 	@BeforeClass
 	public static void launchBrowser() {
-		driver = getDriver();
+		driver =base.getDriver();
 
 	}
 
@@ -24,29 +25,29 @@ public class LoginTest extends Base {
 	public void verifyLoginDetails() {
 		loginPage = new LoginPage();
 	//	Assert.assertTrue(elementFound(driver, 10, loginPage.getImgHomePageLogo()));
-		getScreenShot("facebookPage");
-		setText(loginPage.getTxtFirstName(), readValueFromExcelSheet().get(1)
+	base.getScreenShot("facebookPage");
+	base.setText(loginPage.getTxtFirstName(), base.readValueFromExcelSheet().get(1)
 				.get("firstname"));
-		getScreenShot("firstname");
-		setText(loginPage.getTxtSurName(), readValueFromExcelSheet().get(1)
+	base.getScreenShot("firstname");
+	base.setText(loginPage.getTxtSurName(), base.readValueFromExcelSheet().get(1)
 				.get("surname"));
-		getScreenShot("lastname");
-		setText(loginPage.getTxtEmailAddress(), readValueFromExcelSheet().get(1)
-				.get("emailid"));
-		getScreenShot("emailid");
-		setText(loginPage.getTxtRenterEmailAddress(), readValueFromExcelSheet().get(1)
+	base.getScreenShot("lastname");
+	base.setText(loginPage.getTxtEmailAddress(),base.readValueFromExcelSheet().get(1)
+			.get("emailid"));
+	base.getScreenShot("emailid");
+	base.setText(loginPage.getTxtRenterEmailAddress(),base. readValueFromExcelSheet().get(1)
 				.get("renteremailid"));
-		getScreenShot("renteremailid");
-		setText(loginPage.getTxtPassword(), readValueFromExcelSheet().get(1)
+	base.getScreenShot("renteremailid");
+	base.setText(loginPage.getTxtPassword(), base.readValueFromExcelSheet().get(1)
 				.get("password"));
-		getScreenShot("password");
+	base.getScreenShot("password");
 		
-		dropDownSelect(loginPage.getDrpDwnDay(),"13");
-		dropDownSelect(loginPage.getDrpDwnMonth(),"Jan");
-		dropDownSelect(loginPage.getDrpDwnYear(), "1995");
-		clickBtn(loginPage.getBtnMale());
-		clickBtn(loginPage.getBtnSignup());	
-		System.out.println("program run Success");
+	base.dropDownSelect(loginPage.getDrpDwnDay(),"13");
+	base.dropDownSelect(loginPage.getDrpDwnMonth(),"Jan");
+	base.dropDownSelect(loginPage.getDrpDwnYear(), "1995");
+	base.clickBtn(loginPage.getBtnMale());
+	base.clickBtn(loginPage.getBtnSignup());	
+	System.out.println("program run Success");
 }
 	@AfterClass
 	public static void closeBrowser() {
